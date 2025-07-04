@@ -200,12 +200,12 @@ Returns a formatted string with appropriate text properties."
    ("-I" "Ignore immutable" "--ignore-immutable")
    ("-f" "File" "--file="
     :init-value (lambda (obj)
-                  (let ((metadata (jujutsu-status--get-metadata-at-point (point))))
+                  (let ((metadata (jujutsu-status--get-props-at-point (point))))
                     (when (ht-get metadata :filename)
                       (oset obj value (ht-get metadata :filename))))))
    ("-h" "Hunk" "--hunk="
     :init-value (lambda (obj)
-                  (let ((metadata (jujutsu-status--get-metadata-at-point (point))))
+                  (let ((metadata (jujutsu-status--get-props-at-point (point))))
                     (when (and (eq (ht-get metadata :type) 'hunk)
                                (ht-get metadata :header))
                       (oset obj value (ht-get metadata :header))))))]
